@@ -404,3 +404,11 @@ ul, ol { margin: 0; padding: 0; }
 #main:focus { outline: none; }
 .page > .section:first-child:not(.about) { padding-top: clamp(3.5rem, 7vw, 6rem); }
 .site-footer { border-top: 1px solid rgba(255, 255, 255, 0.14); }
+
+/* ---------- Empty photo spots are hidden: close the gaps they would leave ---------- */
+.hide-empty .hero-body:not(:has(.hero-photo.has-photo)) { grid-template-columns: minmax(0, 1fr); }
+.hide-empty .hero-body:not(:has(.hero-photo.has-photo)) .hero-tag { max-width: 52ch; }
+.hide-empty .about { padding-top: clamp(3.5rem, 7vw, 6rem); }
+.hide-empty .hero:not(:has(.hero-photo.has-photo)) { padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+.hide-empty .rail-card:not(:has(.has-photo)) { display: none; }
+.hide-empty .member:not(:has(.has-photo)) { border-top-width: 6px; }

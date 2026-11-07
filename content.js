@@ -19,7 +19,7 @@ window.SITE = {
   settings: {
     // true  = empty photo spots show a dashed "add photo here" box (good while building).
     // false = empty photo spots are hidden, so the public site never shows gaps.
-    showEmptyPhotoSlots: true,
+    showEmptyPhotoSlots: false,
   },
 
   /* ---------- Team basics (used all over the site) ---------- */
