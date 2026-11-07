@@ -421,3 +421,21 @@ ul, ol { margin: 0; padding: 0; }
 .vb-facts { margin: 2rem 0 1.75rem; padding-top: 1.25rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .vb-photo { border: 6px solid #fff; box-shadow: 10px 10px 0 var(--maroon-600); }
 @media (max-width: 900px) { .vb-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Team cards flip to show a short bio ---------- */
+.member { overflow: visible; background: none; border-top: 0; border-radius: 10px; }
+.flip { perspective: 1200px; cursor: pointer; border-radius: 10px; height: 100%; }
+.flip-inner { display: grid; height: 100%; transform-style: preserve-3d; transition: transform 0.75s var(--spring); }
+.flip.is-flipped .flip-inner { transform: rotateY(180deg); }
+.face { grid-area: 1 / 1; display: flex; flex-direction: column; overflow: hidden; border-radius: 10px; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.face-front { background: var(--steel-100); border-top: 6px solid var(--tc); }
+.face-front .member-info { position: relative; flex: 1; padding-bottom: 2.4rem; }
+.face-back { transform: rotateY(180deg); justify-content: flex-start; gap: 0.35rem; padding: 1.4rem 1.2rem 3rem; background: var(--maroon-800); color: #fff; border-top: 6px solid var(--gold); position: relative; overflow-y: auto; }
+.back-name { font: 800 2rem/1 var(--font-display); }
+.back-role { margin: 0 0 0.6rem; font-weight: 700; font-size: 0.95rem; color: var(--steel-300); }
+.back-bio { margin: 0; font-size: 1rem; line-height: 1.55; color: #f3e9eb; }
+.back-bio.is-empty { color: var(--steel-300); font-style: italic; }
+.flip-hint { position: absolute; right: 0.8rem; bottom: 0.7rem; padding: 0.15rem 0.7rem; border: 1.5px solid currentColor; border-radius: 999px; font-size: 0.78rem; font-weight: 700; color: var(--tc-text); }
+.face-back .flip-hint { color: var(--steel-300); }
+.flip:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .flip-inner { transition: none !important; } }

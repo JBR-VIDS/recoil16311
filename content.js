@@ -80,19 +80,21 @@ window.SITE = {
   },
 
   // team: must be "hardware", "software", or "marketing".
+  // bio: a few sentences about the person. It shows on the back of their card when someone clicks it.
+  //      Leave it "" and the card says "Bio coming soon."
   // Photo file for each person is photos/team/<first name in lowercase>.jpg
   // (or set  photo: "team/some-other-name"  to use a different file name).
   roster: [
-    { name: "Katya",     team: "software",  titles: ["Co-Captain", "Software Lead"] },
-    { name: "Sunaina",   team: "marketing", titles: ["Co-Captain", "Marketing Lead"] },
-    { name: "John",      team: "hardware",  titles: ["Hardware Lead"] },
-    { name: "Alexander", team: "hardware",  titles: ["Hardware Member"] },
-    { name: "Caitlyn",   team: "hardware",  titles: ["Hardware Member"] },
-    { name: "Ben",       team: "hardware",  titles: ["Hardware Member"] },
-    { name: "Konnor",    team: "hardware",  titles: ["Hardware Member"] },
-    { name: "Ayaan",     team: "software",  titles: ["Software Member"] },
-    { name: "Andrew",    team: "marketing", titles: ["Marketing Member"] },
-    { name: "Saanvi",    team: "marketing", titles: ["Marketing Member"] },
+    { name: "Katya",     team: "software",  titles: ["Co-Captain", "Software Lead"], bio: "" },
+    { name: "Sunaina",   team: "marketing", titles: ["Co-Captain", "Marketing Lead"], bio: "" },
+    { name: "John",      team: "hardware",  titles: ["Hardware Lead"], bio: "" },
+    { name: "Alexander", team: "hardware",  titles: ["Hardware Member"], bio: "" },
+    { name: "Caitlyn",   team: "hardware",  titles: ["Hardware Member"], bio: "" },
+    { name: "Ben",       team: "hardware",  titles: ["Hardware Member"], bio: "" },
+    { name: "Konnor",    team: "hardware",  titles: ["Hardware Member"], bio: "" },
+    { name: "Ayaan",     team: "software",  titles: ["Software Member"], bio: "" },
+    { name: "Andrew",    team: "marketing", titles: ["Marketing Member"], bio: "" },
+    { name: "Saanvi",    team: "marketing", titles: ["Marketing Member"], bio: "" },
   ],
 
   /* ---------- Our robot ---------- */

@@ -168,11 +168,25 @@
           (k === 'all' ? 'Everyone' : TEAM_LABEL[k]) + ' <span class="chip-count">' + counts[k] + '</span></button>';
       }).join('') + '</div>' +
       '<ul class="roster">' + roster.map(function (m) {
-        var titles = list(m.titles);
+        var titles = list(m.titles), roles = titles.join(', ');
+        var bio = m.bio ? esc(m.bio) : 'Bio coming soon.';
         return '<li class="member" data-team="' + esc(m.team) + '">' +
-          slot(m.photo || ('team/' + slug(m.name)), { label: m.name, alt: 'Photo of ' + m.name, ratio: '4 / 5', cls: 'member-photo' }) +
-          '<div class="member-info"><h3 class="member-name">' + esc(m.name) + '</h3>' +
-            titles.map(function (t, i) { return '<p class="member-role' + (i ? ' is-second' : '') + '">' + esc(t) + '</p>'; }).join('') +
+          '<div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="' + esc(m.name + (roles ? ', ' + roles : '') + '. Press to read about ' + m.name + '.') + '">' +
+            '<div class="flip-inner">' +
+              '<div class="face face-front">' +
+                slot(m.photo || ('team/' + slug(m.name)), { label: m.name, alt: 'Photo of ' + m.name, ratio: '4 / 5', cls: 'member-photo' }) +
+                '<div class="member-info"><h3 class="member-name">' + esc(m.name) + '</h3>' +
+                  titles.map(function (t, i) { return '<p class="member-role' + (i ? ' is-second' : '') + '">' + esc(t) + '</p>'; }).join('') +
+                  '<span class="flip-hint" aria-hidden="true">About me</span>' +
+                '</div>' +
+              '</div>' +
+              '<div class="face face-back" aria-hidden="true">' +
+                '<h3 class="back-name">' + esc(m.name) + '</h3>' +
+                '<p class="back-role">' + esc(roles) + '</p>' +
+                '<p class="back-bio' + (m.bio ? '' : ' is-empty') + '">' + bio + '</p>' +
+                '<span class="flip-hint" aria-hidden="true">Flip back</span>' +
+              '</div>' +
+            '</div>' +
           '</div></li>';
       }).join('') + '</ul>' +
     '</div></section>';
@@ -387,6 +401,27 @@
       var key = btn.dataset.filter;
       group.querySelectorAll('.chip').forEach(function (c) { c.setAttribute('aria-pressed', String(c === btn)); });
       document.querySelectorAll('.member').forEach(function (m) { m.hidden = !(key === 'all' || m.dataset.team === key); });
+    });
+  }
+
+  /* ---------- Flip a team card to read about the person ---------- */
+  function initFlip() {
+    var roster = document.querySelector('.roster');
+    if (!roster) return;
+    function toggle(card) {
+      var on = !card.classList.contains('is-flipped');
+      card.classList.toggle('is-flipped', on);
+      card.setAttribute('aria-pressed', String(on));
+      var back = card.querySelector('.face-back');
+      if (back) back.setAttribute('aria-hidden', String(!on));
+    }
+    roster.addEventListener('click', function (e) {
+      var card = e.target.closest('.flip'); if (card) toggle(card);
+    });
+    roster.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var card = e.target.closest('.flip'); if (!card) return;
+      e.preventDefault(); toggle(card);
     });
   }
 
@@ -666,6 +701,7 @@
     initNav();
     initPages();
     initFilter();
+    initFlip();
     initWordmarkFit();
     initWordmark();
     initReveal();
