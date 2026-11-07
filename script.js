@@ -138,6 +138,20 @@
     '</div></section>';
   }
 
+  function renderViperbots() {
+    var v = S.viperbots; if (!v) return '';
+    var t = S.team;
+    return '<section class="section viperbots" id="viperbots"><div class="container vb-grid">' +
+      '<div class="vb-main"><h2 class="section-title">' + esc(v.title) + '</h2><p class="lead">' + esc(v.lead) + '</p>' +
+        (v.text ? '<p class="vb-text">' + esc(v.text) + '</p>' : '') +
+        '<ul class="facts vb-facts">' + list(v.stats).map(function (s) {
+          return '<li class="fact"><span class="fact-num">' + esc(s.value) + '</span><span class="fact-label">' + esc(s.label) + '</span></li>';
+        }).join('') + '</ul>' +
+        '<div class="btn-row"><a class="btn btn-solid" href="' + esc(t.programUrl) + '" target="_blank" rel="noopener">Visit ViperBots</a></div></div>' +
+      slot('viperbots', { label: 'ViperBots photo', alt: 'The ' + t.program + ' program', ratio: '4 / 3', cls: 'vb-photo' }) +
+    '</div></section>';
+  }
+
   var TEAM_LABEL = { hardware: 'Hardware', software: 'Software', marketing: 'Marketing' };
 
   function renderTeam() {
@@ -325,7 +339,7 @@
       '<div class="progress" aria-hidden="true"></div>' +
       renderHeader() +
       '<main id="main" tabindex="-1">' +
-        page('home', renderHero() + renderAbout() + renderSponsors()) +
+        page('home', renderHero() + renderAbout() + renderViperbots() + renderSponsors()) +
         page('team', renderTeam() + renderGallery()) +
         page('robot', renderRobot()) +
         page('legacy', renderLegacy()) +
@@ -560,7 +574,7 @@
     '.section-head', '.lead', '.ftc-panel', '.fact', '.team-group', '.mission', '.chips', '.member',
     '.robot-now-copy', '.collage .slot', '.rail-title', '.rail-card', '.mosaic .slot', '.legacy-photo',
     '.tl-item', '.stem-card', '.event-row', '.sponsor', '.game-hud', '.game-stage', '.game-help',
-    '.contact-main', '.map-card'
+    '.contact-main', '.map-card', '.vb-main'
   ].join(',');
 
   function initReveal() {

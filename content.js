@@ -58,6 +58,19 @@ window.SITE = {
     ],
   },
 
+  /* ---------- About ViperBots (home page) ----------
+     Optional photo: photos/viperbots.jpg (or .png). Hidden if the file is missing. */
+  viperbots: {
+    title: "About the ViperBots",
+    lead: "ViperBots is the competitive robotics program at Vandegrift High School in Austin, Texas, and it is the home of Team 16311 Recoil. It started in 2010 with four students and has grown into a program with ten FIRST Tech Challenge teams and one FIRST Robotics Competition team, Valor 6800.",
+    text: "Teams in the program have won UIL state championships and qualified for the FIRST Championship in Houston. Older students mentor younger teams, teams share their designs and code, and the program works to bring more young people, including young women, into STEM.",
+    stats: [
+      { value: "2010", label: "program founded" },
+      { value: "10", label: "FTC teams" },
+      { value: "1", label: "FRC team" },
+    ],
+  },
+
   /* ---------- Our team ---------- */
   teamSection: {
     title: "Meet Team 16311",

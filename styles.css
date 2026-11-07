@@ -412,3 +412,12 @@ ul, ol { margin: 0; padding: 0; }
 .hide-empty .hero:not(:has(.hero-photo.has-photo)) { padding-bottom: clamp(2.5rem, 5vw, 4rem); }
 .hide-empty .rail-card:not(:has(.has-photo)) { display: none; }
 .hide-empty .member:not(:has(.has-photo)) { border-top-width: 6px; }
+
+/* ---------- About the ViperBots (home) ---------- */
+.viperbots { background: #fff; }
+.vb-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.vb-grid:not(:has(.has-photo)) { grid-template-columns: minmax(0, 1fr); }
+.vb-text { max-width: 60ch; margin: 1.25rem 0 0; color: var(--ink-soft); }
+.vb-facts { margin: 2rem 0 1.75rem; padding-top: 1.25rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.vb-photo { border: 6px solid #fff; box-shadow: 10px 10px 0 var(--maroon-600); }
+@media (max-width: 900px) { .vb-grid { grid-template-columns: minmax(0, 1fr); } }
